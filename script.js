@@ -22,18 +22,37 @@ function onSubmit(e) {
     li.className = "item-list";
     let delBtn = document.createElement("button");
     delBtn.className = "item-del";
+    // Creating Edit element
+    let edtBtn = document.createElement("button");
+    edtBtn.className = "item-edt";
 
     li.appendChild(
       document.createTextNode(`${obj.name} ${obj.email} ${obj.phone}`)
     );
     li.appendChild(delBtn);
+    li.appendChild(edtBtn);
     delBtn.appendChild(document.createTextNode("Delete"));
+    edtBtn.appendChild(document.createTextNode("Edit"));
     itemList.appendChild(li);
     delBtn.addEventListener("click", DelItem);
+    edtBtn.addEventListener("click", edtItem);
     function DelItem(e) {
       let li = e.target.parentElement;
       itemList.removeChild(li);
       localStorage.removeItem(obj.email);
+    }
+  }
+  function edtItem(e) {
+    if (localStorage.getItem(obj.email)) {
+      if (e.target.classList.contains("item-edt") !== -1) {
+        const edtData = JSON.parse(localStorage.getItem(obj.email));
+        const li = e.target.parentElement;
+        inputName.value = edtData.name;
+        inputEmail.email = edtData.email;
+        inputPhone.phone = edtData.phone;
+        itemList.removeChild(li);
+        localStorage.removeItem(obj.email);
+      }
     }
   }
 

@@ -44,12 +44,29 @@ input {
   width: 260px;
   background-color: cadetblue;
 }
+
 ul li {
-  width: 400px;
-  margin: 10px 0px 5px 120px;
+  width: 550px;
+  margin: 10px 0px 5px 30px;
   padding: 5px 0px 5px 5px;
   list-style: none;
   color: white;
   border-radius: 5px;
   background-color: cadetblue;
+}
+.item-edt,
+.item-del {
+  width: 60px;
+  margin: 2px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.item-del:hover {
+  background-color: red;
+  color: white;
+}
+.item-edt:hover {
+  color: black;
+  background-color: rgb(255, 255, 0);
 }
